@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bwipkkxtl63ef"]
+[gd_scene load_steps=23 format=4 uid="uid://cgaiav1r1023y"]
 
 [ext_resource type="Script" uid="uid://bt1xw6rs7x0wy" path="res://Scripts/spawner_controller.gd" id="1_e7j4b"]
 
@@ -289,9 +289,12 @@ mesh = SubResource("CylinderMesh_m582m")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tower/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dschw")
 
-[node name="Spawner_Controller" type="Node3D" parent="."]
+[node name="Spawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51960313, -4.3947487)
 script = ExtResource("1_e7j4b")
 grass_path = NodePath("../grass")
 
-[node name="Spawner" type="Node3D" parent="Spawner_Controller"]
+[node name="SpawnTimer" type="Timer" parent="Spawner"]
+wait_time = 0.1
+
+[connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]

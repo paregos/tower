@@ -1,16 +1,23 @@
 extends Node3D
 
-@export var enemy_count: int = 3
+@export var enemy_count: int = 1
+@export var spawn_interval: float = 0.001   # seconds
 @export var margin_from_edge: float = 0.1
-@export var up_offset: float = 0
+@export var up_offset: float = 0.0
 @export var ground_collision_mask: int = 1
 @export_node_path("MeshInstance3D") var grass_path: NodePath
 @export var monster_scene: PackedScene = preload("res://Scenes/skeleton.tscn")
 
-var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+var rng := RandomNumberGenerator.new()
+
+@onready var spawn_timer: Timer = $SpawnTimer
 
 func _ready() -> void:
 	rng.randomize()
+	spawn_timer.wait_time = spawn_interval
+	spawn_timer.start()
+
+func _on_spawn_timer_timeout() -> void:
 	spawn_enemies()
 
 func spawn_enemies() -> void:
