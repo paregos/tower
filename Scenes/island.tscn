@@ -261,13 +261,23 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_m582m")
 
 [node name="flatstones" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.95382494, 0, 1.5864911, 0, 0.8763751, 0, -1.2917515, 0, -1.1714598, -2.934543, -0.50180805, 3.69168)
+transform = Transform3D(0.95260525, -0.04430789, -1.584462, -0.048223607, -0.8752542, 0.08021002, -1.2917515, 0, -1.1714599, 3.3955622, -0.5590199, 3.69168)
 mesh = SubResource("ArrayMesh_twglo")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="flatstones"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="flatstones/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_81x60")
+
+[node name="flatstones" type="MeshInstance3D" parent="flatstones"]
+transform = Transform3D(1.1443609, -0.03175032, -1.3816013, -0.043561056, -0.87579864, 0.047494985, -1.1255856, 0.0016141282, -1.4064841, 1.6231654, 0.41956797, 4.6407456)
+mesh = SubResource("ArrayMesh_twglo")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="flatstones/flatstones"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="flatstones/flatstones/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_81x60")
 
 [node name="stones" type="MeshInstance3D" parent="."]
@@ -278,6 +288,26 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="stones"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stones/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_30k4x")
+
+[node name="stones" type="MeshInstance3D" parent="stones"]
+transform = Transform3D(-0.30484033, 0.46352452, -0.24494837, 0.36049724, 0.2637666, -0.40341386, -0.121932864, -0.37901285, -0.5803143, -13.501383, 8.918989, 3.6223922)
+mesh = SubResource("ArrayMesh_yo87u")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="stones/stones"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stones/stones/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_30k4x")
+
+[node name="stones" type="MeshInstance3D" parent="stones/stones"]
+transform = Transform3D(-0.3048404, 0.4635246, -0.24494827, 0.36049753, 0.26376674, -0.40341377, -0.12193295, -0.37901312, -0.58031446, -29.327744, -2.6936927, 5.232173)
+mesh = SubResource("ArrayMesh_yo87u")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="stones/stones/stones"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stones/stones/stones/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_30k4x")
 
 [node name="tower" type="MeshInstance3D" parent="."]
@@ -292,6 +322,7 @@ shape = SubResource("ConcavePolygonShape3D_dschw")
 [node name="Spawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51960313, -4.3947487)
 script = ExtResource("1_e7j4b")
+spawn_interval = 0.3
 grass_path = NodePath("../grass")
 
 [node name="SpawnTimer" type="Timer" parent="Spawner"]
