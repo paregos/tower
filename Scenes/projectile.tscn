@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cossfdyj2ro4f"]
+
+[ext_resource type="Script" uid="uid://co0x527ukdfl8" path="res://projectile.gd" id="1_lal66"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_8cioo"]
+
+[node name="Projectile" type="Node3D"]
+script = ExtResource("1_lal66")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 50
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_8cioo")
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 0, 0)
+color = Color(1, 0.5946983, 0.21188295, 1)

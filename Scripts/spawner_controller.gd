@@ -66,5 +66,5 @@ func _spawn_monster(pos: Vector3) -> void:
 	var m: Node3D = monster_scene.instantiate() as Node3D
 	add_child(m)
 	m.global_position = pos
-	print("spawn at ", pos)
+	#print("spawn at ", pos)
 	m.scale = Vector3(0.1, 0.1, 0.1)

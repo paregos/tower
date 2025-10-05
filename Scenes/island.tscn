@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=4 uid="uid://cgaiav1r1023y"]
+[gd_scene load_steps=24 format=4 uid="uid://cstm76pamdmaf"]
 
 [ext_resource type="Script" uid="uid://bt1xw6rs7x0wy" path="res://Scripts/spawner_controller.gd" id="1_e7j4b"]
+[ext_resource type="Script" uid="uid://d4ef83h8i5yx8" path="res://Scripts/tower.gd" id="1_m582m"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_e7j4b"]
 
@@ -313,6 +314,9 @@ shape = SubResource("ConcavePolygonShape3D_30k4x")
 [node name="tower" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8745793, 0)
 mesh = SubResource("CylinderMesh_m582m")
+script = ExtResource("1_m582m")
+attack_range = 45.0
+attack_interval = 0.2
 
 [node name="StaticBody3D" type="StaticBody3D" parent="tower"]
 
@@ -322,7 +326,7 @@ shape = SubResource("ConcavePolygonShape3D_dschw")
 [node name="Spawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51960313, -4.3947487)
 script = ExtResource("1_e7j4b")
-spawn_interval = 0.3
+spawn_interval = 2.0
 grass_path = NodePath("../grass")
 
 [node name="SpawnTimer" type="Timer" parent="Spawner"]
