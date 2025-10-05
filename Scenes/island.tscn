@@ -326,7 +326,7 @@ shape = SubResource("ConcavePolygonShape3D_dschw")
 [node name="Spawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51960313, -4.3947487)
 script = ExtResource("1_e7j4b")
-spawn_interval = 2.0
+spawn_interval = 0.2
 grass_path = NodePath("../grass")
 
 [node name="SpawnTimer" type="Timer" parent="Spawner"]

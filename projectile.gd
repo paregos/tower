@@ -5,10 +5,10 @@ extends Node3D
 @export var damage: int = 1
 var target: Node3D = null
 
-@onready var particles: CPUParticles3D = $CPUParticles3D
+#@onready var particles: CPUParticles3D = $CPUParticles3D
 
 func _ready() -> void:
-	if particles: particles.restart()   # fire the one-shot burst
+	#if particles: particles.restart()   # fire the one-shot burst
 	# auto-despawn after lifetime
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()

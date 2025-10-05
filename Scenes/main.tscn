@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=4 uid="uid://cnuan21r3remy"]
 
 [ext_resource type="Script" uid="uid://c3nvtf2dwlw1j" path="res://Scripts/camera_3d.gd" id="1_21xkr"]
-[ext_resource type="PackedScene" uid="uid://cgaiav1r1023y" path="res://Scenes/island.tscn" id="1_bmvtd"]
+[ext_resource type="PackedScene" uid="uid://cstm76pamdmaf" path="res://Scenes/island.tscn" id="1_bmvtd"]
 [ext_resource type="PackedScene" uid="uid://ce4ri2215s6ua" path="res://Assets/cloud.glb" id="3_xf8s4"]
 [ext_resource type="Shader" uid="uid://c124bd51ron1g" path="res://Shaders/clouds.gdshader" id="4_qsrap"]
 [ext_resource type="Texture2D" uid="uid://dnbldkcba3nhk" path="res://Assets/noise.tres" id="5_7cs18"]

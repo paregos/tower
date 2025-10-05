@@ -1,20 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cossfdyj2ro4f"]
+[gd_scene load_steps=4 format=3 uid="uid://cossfdyj2ro4f"]
 
 [ext_resource type="Script" uid="uid://co0x527ukdfl8" path="res://projectile.gd" id="1_lal66"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_8cioo"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8cdk"]
+albedo_color = Color(0.95875174, 0.37135807, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_f8cdk"]
+material = SubResource("StandardMaterial3D_f8cdk")
 
 [node name="Projectile" type="Node3D"]
 script = ExtResource("1_lal66")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
-emitting = false
-amount = 50
-lifetime = 0.3
-one_shot = true
-explosiveness = 1.0
-mesh = SubResource("SphereMesh_8cioo")
-emission_shape = 1
-emission_sphere_radius = 1.0
-gravity = Vector3(0, 0, 0)
-color = Color(1, 0.5946983, 0.21188295, 1)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, -4.371139e-09, -0.1, 0, 0.1, -4.371139e-09, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_f8cdk")
