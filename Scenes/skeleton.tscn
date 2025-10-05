@@ -803,7 +803,7 @@ _data = {
 }
 
 [node name="Skeleton" type="CharacterBody3D"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 script = ExtResource("1_sfdtf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -943,5 +943,3 @@ libraries = {
 &"Skeleton": SubResource("AnimationLibrary_l4ts6")
 }
 autoplay = "Skeleton/Idle"
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

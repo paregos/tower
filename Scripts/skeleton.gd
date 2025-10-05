@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var speed: float = 2.0
+@export var speed: float = 0.1
 @export var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity") as float
 @export var target: Vector3 = Vector3.ZERO  # (0, any_y, 0)
 
@@ -29,4 +29,4 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = 0.0
 
-	move_and_slide()
+	#move_and_slide()

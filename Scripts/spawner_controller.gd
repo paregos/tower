@@ -1,8 +1,8 @@
 extends Node3D
 
 @export var enemy_count: int = 3
-@export var margin_from_edge: float = 2.0
-@export var up_offset: float = 0.5
+@export var margin_from_edge: float = 0.1
+@export var up_offset: float = 0
 @export var ground_collision_mask: int = 1
 @export_node_path("MeshInstance3D") var grass_path: NodePath
 @export var monster_scene: PackedScene = preload("res://Scenes/skeleton.tscn")
@@ -39,18 +39,25 @@ func _spawn_point(center: Vector3, radius: float) -> Vector3:
 	var theta: float = rng.randf_range(0.0, TAU)
 	var x: float = center.x + r * sin(theta)
 	var z: float = center.z + r * cos(theta)
-	return _raycast_down(Vector3(x, center.y + 100.0, z), Vector3(x, center.y - 100.0, z))
+	var from: Vector3 = Vector3(x, center.y + 200.0, z)
+	var to: Vector3   = Vector3(x, center.y - 200.0, z)
+	return _raycast_down(from, to, center.y)
 
-func _raycast_down(from: Vector3, to: Vector3) -> Vector3:
+func _raycast_down(from: Vector3, to: Vector3, fallback_y: float) -> Vector3:
 	var space: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var params := PhysicsRayQueryParameters3D.create(from, to)
 	params.collision_mask = ground_collision_mask
 	var hit: Dictionary = space.intersect_ray(params)
+
 	if hit.has("position"):
-		return (hit["position"] as Vector3) + Vector3(0.0, up_offset, 0.0)
-	return to + Vector3(0.0, up_offset, 0.0)
+		return hit["position"] + Vector3(0.0, up_offset, 0.0)
+
+	# fallback if ray misses
+	return Vector3(from.x, fallback_y + up_offset, from.z)
 
 func _spawn_monster(pos: Vector3) -> void:
 	var m: Node3D = monster_scene.instantiate() as Node3D
-	m.global_position = pos
 	add_child(m)
+	m.global_position = pos
+	print("spawn at ", pos)
+	m.scale = Vector3(0.1, 0.1, 0.1)
