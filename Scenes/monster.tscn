@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://otl3lw6c0v4k"]
+
+[ext_resource type="PackedScene" uid="uid://6bkkysa5oi6d" path="res://Assets/Monster Pack Animated by Quaternius/FBX/Skeleton.fbx" id="1_xhoai"]
+
+[node name="Monster" type="Node3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Skeleton" parent="." instance=ExtResource("1_xhoai")]
+transform = Transform3D(0.295, 0, 0, 0, 0.295, 0, 0, 0, 0.295, 0, 0, 0)
