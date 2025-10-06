@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://ccldmyitv7gjv" path="res://Scripts/skeleton.gd" id="1_sfdtf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sfdtf"]
-radius = 1.052
-height = 5.42
+margin = 0.05
+radius = 1.0
+height = 5.4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1j2s"]
 resource_name = "Skeleton"
@@ -804,6 +805,10 @@ _data = {
 
 [node name="Skeleton" type="CharacterBody3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+wall_min_slide_angle = 0.0
+floor_constant_speed = true
+floor_block_on_wall = false
+floor_max_angle = 3.1415927
 script = ExtResource("1_sfdtf")
 mesh_path = NodePath("SkeletonArmature/Skeleton3D/Cylinder_001")
 anim_player_path = NodePath("AnimationPlayer")

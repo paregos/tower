@@ -10,17 +10,26 @@ extends Node3D
 
 var rng := RandomNumberGenerator.new()
 
+var spawncount = 0;
 @onready var spawn_timer: Timer = $SpawnTimer
 
 func _ready() -> void:
 	rng.randomize()
 	spawn_timer.wait_time = spawn_interval
-	spawn_timer.start()
+	spawn_timer.stop() # don't auto-start
+
+	GameManager.game_started.connect(func(): spawn_timer.start())
+	GameManager.game_over.connect(func(): spawn_timer.stop())
+	GameManager.game_paused.connect(func(): spawn_timer.paused = true)
+	GameManager.game_resumed.connect(func(): spawn_timer.paused = false)
+
 
 func _on_spawn_timer_timeout() -> void:
 	spawn_enemies()
 
 func spawn_enemies() -> void:
+	spawncount += 1
+	print ("spawned total of: ", spawncount)
 	var grass: MeshInstance3D = get_node(grass_path) as MeshInstance3D
 	var center: Vector3 = _island_center(grass)
 	var radius: float = _island_radius(grass)

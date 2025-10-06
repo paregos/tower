@@ -27,7 +27,7 @@ func _ready() -> void:
 	_timer.timeout.connect(_on_attack_timeout)
 
 func take_damage(amount: int) -> void:
-	print("tower take damage: ", amount)
+	#print("tower take damage: ", amount)
 	health -= amount
 	if health <= 0:
 		die()
@@ -35,7 +35,8 @@ func take_damage(amount: int) -> void:
 func die() -> void:
 	if is_instance_valid(_timer):
 		_timer.stop()
-	print("Tower died (mock)")
+	GameManager.end_game()
+	#print("Tower died (mock)")
 	# queue_free()  # enable when you want towers to be removable
 
 func _on_attack_timeout() -> void:
