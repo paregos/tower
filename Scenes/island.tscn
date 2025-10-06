@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bt1xw6rs7x0wy" path="res://Scripts/spawner_controller.gd" id="1_e7j4b"]
 [ext_resource type="Script" uid="uid://d4ef83h8i5yx8" path="res://Scripts/tower.gd" id="1_m582m"]
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_e7j4b"]
+[sub_resource type="NavigationMesh" id="NavigationMesh_m582m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tm10"]
 resource_name = "grass"
@@ -238,8 +238,7 @@ data = PackedVector3Array(0, 1, 0.5, 0.049, 1, 0.4976, 0, 0.59999996, 0.5, 0.049
 [node name="3d scene" type="Node3D"]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 4.656613e-10, -1.4901161e-08, 9.313226e-10)
-navigation_mesh = SubResource("NavigationMesh_e7j4b")
+navigation_mesh = SubResource("NavigationMesh_m582m")
 
 [node name="grass" type="MeshInstance3D" parent="."]
 transform = Transform3D(6.5207257, 0, 0, 0, 0.20378195, 0, 0, 0, 5.617532, 0.0043209456, -0.22319579, 0.009131223)
@@ -326,7 +325,6 @@ shape = SubResource("ConcavePolygonShape3D_dschw")
 [node name="Spawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51960313, -4.3947487)
 script = ExtResource("1_e7j4b")
-spawn_interval = 0.2
 grass_path = NodePath("../grass")
 
 [node name="SpawnTimer" type="Timer" parent="Spawner"]

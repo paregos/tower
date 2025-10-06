@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var enemy_count: int = 1
-@export var spawn_interval: float = 0.001   # seconds
+@export var spawn_interval: float = 0.2  # seconds
 @export var margin_from_edge: float = 0.1
 @export var up_offset: float = 0.0
 @export var ground_collision_mask: int = 1
