@@ -280,49 +280,51 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="flatstones/flatstones/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_81x60")
 
-[node name="Stones" type="Node" parent="."]
-
-[node name="stones4" type="MeshInstance3D" parent="Stones"]
+[node name="stones4" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.062772624, 0.14048666, 0.0037606652, -0.106769465, -0.052160382, -0.021086816, 0.032139502, 0.049192417, 0.18696147, 1.8903077, -0.22687241, -0.95923376)
+visible = false
 mesh = SubResource("ArrayMesh_yo87u")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Stones/stones4"]
+[node name="StaticBody3D" type="StaticBody3D" parent="stones4"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Stones/stones4/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stones4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_30k4x")
 debug_color = Color(0.7428829, 0, 0.38660032, 0.41960785)
 
-[node name="stones3" type="MeshInstance3D" parent="Stones"]
+[node name="stones3" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.07790894, -0.0100481585, -0.3471524, -0.11835316, -0.14387588, -0.17648044, -0.029500555, 0.21843651, -0.0152922645, -2.3680267, -1.1795379, -4.5663614)
+visible = false
 mesh = SubResource("ArrayMesh_yo87u")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Stones/stones3"]
+[node name="StaticBody3D" type="StaticBody3D" parent="stones3"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Stones/stones3/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stones3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_30k4x")
 debug_color = Color(0.7428829, 0, 0.38660032, 0.41960785)
 
-[node name="stones2" type="MeshInstance3D" parent="Stones"]
+[node name="stones2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.041208282, 0.3622416, 0.3290031, 0.07322162, -0.14086019, 0.37112615, 0.28104335, 0.10088776, -0.16240907, -1.9051144, -1.3533435, 4.7975197)
+visible = false
 mesh = SubResource("ArrayMesh_yo87u")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Stones/stones2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="stones2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Stones/stones2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stones2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_30k4x")
 debug_color = Color(0.7428829, 0, 0.38660032, 0.41960785)
 
-[node name="stones" type="MeshInstance3D" parent="Stones"]
+[node name="stones" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1953651, 0.04846588, -0.6830942, -0.40888304, -0.24335751, -0.29776475, -0.1800025, 0.6053988, -0.06500926, 2.7747533, -3.6896362, -2.7968192)
+visible = false
 mesh = SubResource("ArrayMesh_yo87u")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Stones/stones"]
+[node name="StaticBody3D" type="StaticBody3D" parent="stones"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Stones/stones/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stones/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_30k4x")
 debug_color = Color(0.7428829, 0, 0.38660032, 0.41960785)
 
