@@ -10,7 +10,7 @@ extends Node3D
 @export_node_path("Node3D") var muzzle_path: NodePath  # optional spawn point
 
 # Incoming damage
-@export var max_health: int = 20
+@export var max_health: int = 20000
 var health: int
 
 var _timer: Timer

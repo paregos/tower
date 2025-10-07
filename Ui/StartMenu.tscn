@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bhv3f47rb6ljt" path="res://Ui/StartMenu.gd" id="1_gwfmm"]
 
-[node name="Control" type="Control"]
+[node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,23 +20,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="MainPanel" type="VBoxContainer" parent="CenterContainer"]
+visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="CenterContainer/MainPanel"]
 layout_mode = 2
 text = "Tower"
 horizontal_alignment = 1
 
-[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="CenterContainer/MainPanel"]
 layout_mode = 2
 text = "Start Game"
 
-[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="CenterContainer/MainPanel"]
 layout_mode = 2
 text = "Settings"
 
-[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="CenterContainer/MainPanel"]
 layout_mode = 2
 text = "Quit
+"
+
+[node name="PausePanel" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="PausedLabel" type="Label" parent="CenterContainer/PausePanel"]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/PausePanel"]
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitToMenuButton" type="Button" parent="CenterContainer/PausePanel"]
+layout_mode = 2
+text = "Quit to main
 "

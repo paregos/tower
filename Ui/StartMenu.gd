@@ -1,9 +1,17 @@
-# StartMenu.gd
 extends Control
 
-@onready var start_btn: Button = $CenterContainer/VBoxContainer/StartButton
-@onready var settings_btn: Button = $CenterContainer/VBoxContainer/SettingsButton
-@onready var quit_btn: Button = $CenterContainer/VBoxContainer/QuitButton
+# Panels
+@onready var main_panel: VBoxContainer  = $CenterContainer/MainPanel
+@onready var pause_panel: VBoxContainer = $CenterContainer/PausePanel
+
+# Main panel buttons
+@onready var start_btn: Button         = $CenterContainer/MainPanel/StartButton
+@onready var settings_btn_main: Button = $CenterContainer/MainPanel/SettingsButton
+@onready var quit_btn_app: Button      = $CenterContainer/MainPanel/QuitButton
+
+# Pause panel buttons
+@onready var settings_btn_pause: Button = $CenterContainer/PausePanel/SettingsButton
+@onready var quit_to_menu_btn: Button   = $CenterContainer/PausePanel/QuitToMenuButton
 
 func _ready() -> void:
 	# Let this UI still receive input while paused (so ESC works if you use it here)
@@ -11,28 +19,41 @@ func _ready() -> void:
 
 	# Buttons
 	start_btn.pressed.connect(_on_start)
-	settings_btn.pressed.connect(_on_settings)
-	quit_btn.pressed.connect(_on_quit)
+	settings_btn_main.pressed.connect(_on_settings)
+	quit_btn_app.pressed.connect(_on_quit_app)
 
-	# Visibility rules:
-	# - Hide on game start
-	# - (Optional) show when paused, hide when resumed
-	# - Show on game over / back to menu
-	GameManager.game_started.connect(func(): _set_menu_visible(false))
-	GameManager.game_paused.connect(func(): _set_menu_visible(true))
-	GameManager.game_resumed.connect(func(): _set_menu_visible(false))
-	GameManager.game_over.connect(func(): _set_menu_visible(true))
+	settings_btn_pause.pressed.connect(_on_settings)
+	quit_to_menu_btn.pressed.connect(_on_quit_to_menu)
+
+	# Visibility rules driven by GameManager
+	GameManager.game_started.connect(_refresh_panels)
+	GameManager.game_paused.connect(_refresh_panels)
+	GameManager.game_resumed.connect(_refresh_panels)
+	GameManager.game_over.connect(_refresh_panels)
 
 	# On boot (MENU), menu should be visible
 	_set_menu_visible(true)
+	_refresh_panels()
 
 func _set_menu_visible(show: bool) -> void:
 	visible = show
 	# When hidden, ignore mouse so gameplay UI beneath is clickable
 	mouse_filter = Control.MOUSE_FILTER_STOP if show else Control.MOUSE_FILTER_IGNORE
+	if show:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func _refresh_panels() -> void:
+	# Overlay shown whenever not PLAYING
+	var overlay_on := GameManager.state != GameManager.State.PLAYING
+	_set_menu_visible(overlay_on)
+
+	# Which panel to show?
+	var in_menu := GameManager.state == GameManager.State.MENU or GameManager.state == GameManager.State.GAMEOVER
+	main_panel.visible  = in_menu
+	pause_panel.visible = (GameManager.state == GameManager.State.PAUSED)
 
 func _on_start() -> void:
-	GameManager.start_game()  # the signal above will hide us
+	GameManager.start_game() # signal triggers _refresh_panels
 
 func _on_settings() -> void:
 	var d := AcceptDialog.new()
@@ -40,10 +61,13 @@ func _on_settings() -> void:
 	add_child(d)
 	d.popup_centered()
 
-func _on_quit() -> void:
+func _on_quit_app() -> void:
 	get_tree().quit()
 
-# If you want ESC to toggle pause from here (optional; you can also do this in GameManager)
+func _on_quit_to_menu() -> void:
+	GameManager.reset_to_menu()
+
+# ESC toggles pause here 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_pause"):
 		if GameManager.state == GameManager.State.PLAYING:
