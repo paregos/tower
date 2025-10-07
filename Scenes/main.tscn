@@ -162,10 +162,9 @@ _data = {
 [node name="World" type="Node3D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="Menu" parent="CanvasLayer" instance=ExtResource("1_6bp64")]
-mouse_filter = 1
-mouse_behavior_recursive = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 texture_filter = 1

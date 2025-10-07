@@ -7,7 +7,7 @@ extends Control
 
 func _ready() -> void:
 	# Let this UI still receive input while paused (so ESC works if you use it here)
-	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	# Buttons
 	start_btn.pressed.connect(_on_start)

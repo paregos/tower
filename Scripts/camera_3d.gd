@@ -8,25 +8,12 @@ extends Camera3D
 var yaw: float = 0.0
 var pitch: float = 0.0
 
-func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		yaw -= event.relative.x * mouse_sensitivity
 		pitch -= event.relative.y * mouse_sensitivity
 		pitch = clamp(pitch, deg_to_rad(-89), deg_to_rad(89))
 		rotation = Vector3(pitch, yaw, 0)
-	elif event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			else:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		elif event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
-			translate_object_local(Vector3(0, 0, -scroll_speed * get_process_delta_time()))
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-			translate_object_local(Vector3(0, 0,  scroll_speed * get_process_delta_time()))
 
 func _process(delta: float) -> void:
 	var input_dir := Vector3.ZERO

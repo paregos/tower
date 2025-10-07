@@ -1,3 +1,4 @@
+# Autoload: GameManager.gd
 extends Node
 
 enum State { MENU, PLAYING, PAUSED, GAMEOVER }
@@ -14,28 +15,32 @@ func _ready() -> void:
 
 func start_game() -> void:
 	_set_state(State.PLAYING)
-	emit_signal("game_started")
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	game_started.emit()
 
 func open_settings() -> void:
-	emit_signal("settings_opened")
+	settings_opened.emit()
 
 func pause_game() -> void:
 	if state == State.PLAYING:
 		_set_state(State.PAUSED)
-		emit_signal("game_paused")
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		game_paused.emit()
 
 func resume_game() -> void:
-	print("resumed game outer")
 	if state == State.PAUSED:
 		_set_state(State.PLAYING)
-		print("resumed game")
-		emit_signal("game_resumed")
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		game_resumed.emit()
 
 func end_game() -> void:
 	_set_state(State.GAMEOVER)
-	emit_signal("game_over")
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	game_over.emit()
 
 func _set_state(value: State) -> void:
 	state = value
-	# Optional: route UI visibility or pause tree here if you like
-	get_tree().paused = (state == State.PAUSED)
+	if state == State.PAUSED:
+		get_tree().paused = true
+	else:
+		get_tree().paused = false
