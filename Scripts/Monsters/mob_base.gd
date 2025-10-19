@@ -325,15 +325,15 @@ func _get_mesh() -> GeometryInstance3D:
 
 func _apply_tint(value) -> void:
 	var mesh := _get_mesh()
-	if mesh == null:
-		return
-	var mat := mesh.material_override
-	if mat == null:
-		mat = StandardMaterial3D.new()
-		mesh.material_override = mat
-	if mat is StandardMaterial3D:
-		var c: Color = value if value is Color else Color(value)
-		mat.albedo_color = c
+	#if mesh == null:
+		#return
+	#var mat := mesh.material_override
+	#if mat == null:
+		#mat = StandardMaterial3D.new()
+		#mesh.material_override = mat
+	#if mat is StandardMaterial3D:
+		#var c: Color = value if value is Color else Color(value)
+		#mat.albedo_color = c
 
 func _flash_red() -> void:
 	var mesh := _get_mesh()

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Encounter" load_steps=5 format=3 uid="uid://cggxn1snyfjok"]
+
+[ext_resource type="Script" uid="uid://qf7lgr22tq7l" path="res://Scripts/Rogue/Encounter.gd" id="1_8v4jo"]
+[ext_resource type="Script" uid="uid://5itpl78bjh0y" path="res://Scripts/Rogue/MobSpawn.gd" id="2_i4c6d"]
+[ext_resource type="Resource" uid="uid://cmmcvx4180oyy" path="res://Rogue/Archetypes/Slime.tres" id="3_i4c6d"]
+
+[sub_resource type="Resource" id="Resource_qufst"]
+script = ExtResource("2_i4c6d")
+mob = ExtResource("3_i4c6d")
+count = 40
+metadata/_custom_type_script = "uid://5itpl78bjh0y"
+
+[resource]
+script = ExtResource("1_8v4jo")
+id = &"40_slimes"
+title = "Slime Attack!"
+spawns = Array[ExtResource("2_i4c6d")]([SubResource("Resource_qufst")])
+metadata/_custom_type_script = "uid://qf7lgr22tq7l"

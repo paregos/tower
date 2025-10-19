@@ -1,7 +1,12 @@
-[gd_scene load_steps=20 format=4 uid="uid://cstm76pamdmaf"]
+[gd_scene load_steps=25 format=4 uid="uid://cstm76pamdmaf"]
 
-[ext_resource type="Script" uid="uid://bt1xw6rs7x0wy" path="res://Scripts/spawner_controller.gd" id="1_e7j4b"]
+[ext_resource type="Script" uid="uid://bt1xw6rs7x0wy" path="res://Scripts/Rogue/spawner_controller.gd" id="1_e7j4b"]
 [ext_resource type="Script" uid="uid://d4ef83h8i5yx8" path="res://Scripts/tower.gd" id="1_m582m"]
+[ext_resource type="Script" uid="uid://7tguna3n1tx0" path="res://Scripts/Rogue/EncounterPicker.gd" id="3_xdam4"]
+[ext_resource type="Script" uid="uid://qf7lgr22tq7l" path="res://Scripts/Rogue/Encounter.gd" id="4_oxod3"]
+[ext_resource type="Resource" uid="uid://bdkiwmx6n4asv" path="res://Rogue/Encounters/25_skeletons.tres" id="5_pphyd"]
+[ext_resource type="Resource" uid="uid://cggxn1snyfjok" path="res://Rogue/Encounters/40_slimes.tres" id="6_cdoyj"]
+[ext_resource type="Script" uid="uid://cva0g04de1y3o" path="res://Scripts/Rogue/WaveRunner.gd" id="7_oxod3"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_m582m"]
 
@@ -259,6 +264,14 @@ grass_path = NodePath("../grass")
 [node name="SpawnTimer" type="Timer" parent="Spawner"]
 wait_time = 0.1
 
-[node name="Trees" type="Node" parent="."]
+[node name="EncounterPicker" type="Node" parent="."]
+script = ExtResource("3_xdam4")
+encounters = Array[ExtResource("4_oxod3")]([ExtResource("5_pphyd"), ExtResource("6_cdoyj")])
+
+[node name="WaveRunner" type="Node" parent="."]
+script = ExtResource("7_oxod3")
+spawner_path = NodePath("../Spawner")
+picker_path = NodePath("../EncounterPicker")
+auto_start_first_option = false
 
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]

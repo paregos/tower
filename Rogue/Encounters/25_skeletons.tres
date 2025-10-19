@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Encounter" load_steps=5 format=3 uid="uid://bdkiwmx6n4asv"]
+
+[ext_resource type="Script" uid="uid://qf7lgr22tq7l" path="res://Scripts/Rogue/Encounter.gd" id="1_x80x1"]
+[ext_resource type="Script" uid="uid://5itpl78bjh0y" path="res://Scripts/Rogue/MobSpawn.gd" id="2_3my4n"]
+[ext_resource type="Resource" uid="uid://gr58qbrjwegw" path="res://Rogue/Archetypes/Skeleton.tres" id="3_3my4n"]
+
+[sub_resource type="Resource" id="Resource_tus3x"]
+script = ExtResource("2_3my4n")
+mob = ExtResource("3_3my4n")
+count = 25
+metadata/_custom_type_script = "uid://5itpl78bjh0y"
+
+[resource]
+script = ExtResource("1_x80x1")
+id = &"25_skeletons"
+title = "Bone Brigade"
+spawns = Array[ExtResource("2_3my4n")]([SubResource("Resource_tus3x")])
+metadata/_custom_type_script = "uid://qf7lgr22tq7l"

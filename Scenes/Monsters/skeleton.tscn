@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=4 uid="uid://jrdnt6y8axs6"]
 
-[ext_resource type="Script" uid="uid://ccldmyitv7gjv" path="res://Scripts/skeleton.gd" id="1_sfdtf"]
+[ext_resource type="Script" uid="uid://ccldmyitv7gjv" path="res://Scripts/Monsters/skeleton.gd" id="1_sfdtf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sfdtf"]
 margin = 0.05
